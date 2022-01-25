@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: zabbix-mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      TZ: America/Sao_Paulo
+      MYSQL_DATABASE: "cartola"
+      MYSQL_USER: "cartola"
+      MYSQL_PASSWORD: "cartola"
+      MYSQL_ROOT_PASSWORD: "cartola"  
+    ports:
+      - "3306:3306"
+    volumes:
+     - /home/data/zabbix/database/mysql:/var/lib/mysql
+     - /etc/localtime:/etc/localtime:ro
+    restart: always
